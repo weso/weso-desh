@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+	<!--- Application context definition-->
+<beans>
+
+    
+
+    <bean id="LOG"
+        class="org.springframework.beans.factory.config.CommonsLogFactoryBean"  autowire="byName">
+        <property name="logName" value="LOG" />
+    </bean>
+    
+    
+    <bean id="config"
+        class="es.uniovi.weso.configuration.impl.ConfigurationLoaderImpl"  autowire="byName" /> 
+    
+    <bean id="rdfaTemplate"
+        class="es.uniovi.weso.rdfa.impl.RDFaTemplateImpl"  autowire="byName" /> 
+    
+    <bean id="rdfaGenerator"
+        class="es.uniovi.weso.rdfa.impl.RDFaGeneratorImpl"  autowire="byName" /> 
+    
+    <bean id="applicationManager"
+        class="es.uniovi.weso.core.impl.ApplicationManagerImpl"  autowire="byName" /> 
+    
+  
+  	<bean id="services" 
+		class="es.uniovi.weso.business.ServicesFactoryImpl" autowire="byName" />
+    
+    <bean id="persistence" 
+    	class="es.uniovi.weso.persistence.jpa.JpaPersistenceFactory" autowire="byName" />    
+    
+    <bean id="executor" 
+   		class="es.uniovi.weso.persistence.jpa.JpaPersistenceFactory" autowire="byName" />    
+   
+   	<bean id="instance" 
+		class="es.uniovi.weso.infraestructure.Factories" autowire="byName"/>
+    
+    
+</beans>

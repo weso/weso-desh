@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ###HTML_PREFIXES### version="XHTML+RDFa 1.1" > 
+<head>
+<!--<base href="###RESOURCE_URI###" />-->
+<title> ###PAGE_TITLE### </title>
+<link rel="foaf:primarytopic" href="###RESOURCE_URI###"/>
+<link rel="stylesheet" type="text/css" href="###URL_BASE###css/rdfa.css" />
+<meta http-equiv="Content-Style-Type" content="text/css" /> 
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+<script type="text/javascript">
+<![CDATA[
+
+function loadTriples(resource,div){
+	
+	  var url = "resource="+resource;
+    
+  if(xmlhttp) {
+      
+    xmlhttp.open("GET","###URL_BASE###RDFaAjaxPart?"+url ,true); //gettime will be the servlet name
+    xmlhttp.onreadystatechange  = handleServerResponse(div);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xmlhttp.send(null);
+  }
+	
+}
+
+
+
+
+function getXMLObject()  //XML OBJECT
+{
+   var xmlHttp = false;
+   try {
+     xmlHttp = new ActiveXObject("Msxml2.XMLHTTP")  // For Old Microsoft Browsers
+   }
+   catch (e) {
+     try {
+       xmlHttp = new ActiveXObject("Microsoft.XMLHTTP")  // For Microsoft IE 6.0+
+     }
+     catch (e2) {
+       xmlHttp = false   // No Browser accepts the XMLHTTP Object then false
+     }
+   }
+   if (!xmlHttp && typeof XMLHttpRequest != 'undefined') {
+     xmlHttp = new XMLHttpRequest();        //For Mozilla, Opera Browsers
+   }
+   return xmlHttp;  // Mandatory Statement returning the ajax object created
+}
+ 
+var xmlhttp = new getXMLObject();   //xmlhttp holds the ajax object
+
+
+
+
+function handleServerResponse(div) {
+       if (xmlhttp.readyState == 4) {
+         if(xmlhttp.status == 200) {
+           document.getElementById(div).innerHTML=xmlhttp.responseText; //Update the HTML Form element 
+         }
+         else {
+            alert("Error during AJAX call. Please try again");
+         }
+       }
+    }
+]]>
+</script>
+###ALTERNATES_CONTENT_TYPES_HEAD### 
+</head>
+<body>
+<!--
+    
+    ATENTION!
+    PLEASE DO NOT DELETE THIS SECTION, WILL BE AUTOMATICALLY DELETED WHEN THE 
+    HTML WILL BE GENERATED.
+    
+    
+<h1>WESO DESH HTML+RDFa Template</h1>
+<h2>Marks</h2>
+###HTML_PREFIXES###
+all namespaces generated
+
+###PAGE_TITLE###
+the page title
+
+###URL_BASE###
+the url base for images and css
+
+###ALTERNATES_CONTENT_TYPES_HEAD###
+alternate content types for put in the head section
+
+###CONTENT###
+the content, both the RDFa and HTML
+
+###OTHER_REPRESENTATIONS###
+text string that indicates "other representations of the resource"
+
+###ALTERNATES_CONTENT_TYPES_FOOTER###
+links to alternate content, that are visible to users 
+
+###SPARQL_ENDPOINT###
+the URL of Sparql endpoint
+
+-->
+###CONTENT###
+<div class="otherRepresentations">
+<p>###OTHER_REPRESENTATIONS###</p>
+<ul>
+    ###ALTERNATES_CONTENT_TYPES_FOOTER### 
+</ul> 
+</div>
+<div class="footLogos">
+   <a href="###SPARQL_ENDPOINT###">
+		<img alt="W3C Semantic Web Technology" src="###URL_BASE###images/sw-sparql-blue.png"/>
+   </a> 
+   <a href="http://www.opendefinition.org/">
+        <img alt="This material is Open Knowledge" src="###URL_BASE###images/od_80x15_red_green.png"/>
+   </a>
+   <a resource="http://www.w3.org/TR/rdfa-syntax"
+        rel="dc:conformsTo" xmlns:dc="http://purl.org/dc/terms/"
+        href="http://validator.w3.org/check?uri=referer">
+        <img  src="###URL_BASE###images/valid-xhtml-rdfa.png" alt="Valid XHTML + RDFa" />
+   </a>
+   <a href="http://jigsaw.w3.org/css-validator/check/referer"> 
+    <img src="###URL_BASE###images/css.png" alt="Valid CSS!" /> 
+   </a> 
+   <a href="http://www.weso.es"> 
+    <img src="###URL_BASE###images/weso.png" alt="WESO Research Group" /> 
+   </a> 
+   
+</div>
+</body>
+</html>

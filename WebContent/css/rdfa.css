@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size:0.82em;
+    margin: 0 auto;
+    background-color: #efefef;
+    font-family: "Lucida Grande", Tahoma, Verdana, Helvetica, sans-serif;
+    border-top: 4px solid #CC0000;
+    color: #666;
+    width:100%;
+}
+
+
+.rdfa-content, .otherRepresentations{
+margin:0 auto;
+width:1058px;
+}
+    
+a{
+color:#336699;
+background-color:transparent;
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+
+
+.clear_both{clear:both;}
+
+.entity{
+border:1px solid #777;
+padding:1em;
+background-color:#fff;
+margin:1em;
+border-radius:7px;
+-moz-border-radius:7px;
+-webkit-border-radius:7px;
+box-shadow: 0 1px 4px #333;
+-moz-box-shadow: 0 1px 4px #333;
+-webkit-box-shadow: 0 1px 4px #333;
+padding:10px;
+}
+
+.entityRef{
+font-size:1.5em;
+color:#336699;
+font-weight:bold;
+}
+
+ul{
+margin:1em;
+}
+ul li{
+margin:0.5em;
+list-style-type:square;
+color:#369;
+}
+
+.value{
+color:#000;
+}
+
+.otherRepresentations{
+background-color:#efefef;
+text-align:center;
+
+min-height:2em;
+}
+
+
+
+.otherRepresentations ul li,.otherRepresentations ul,  .otherRepresentations p {
+float:left;
+list-style:none;
+margin:0;
+}
+
+.otherRepresentations p {
+margin-left:25%;
+}
+.otherRepresentations{
+padding:1em;
+}
+
+.otherRepresentations ul li {
+margin-left:1em;
+}
+
+.footLogos{
+text-align:center;
+}
+
+ul li{
+color:#777;
+}
+ul li.level-1 a{
+font-size:1.5em;
+
+}
+
+
+ul li.level-2 a{
+font-size:1em;
+color:#369;
+}
+
+ul li.level-3 a{
+font-size:1em;
+color:#e00;
+}
+
+.value{
+color:#000;
+}
+
+
+ul li a.resource{
+color:#e00;
+}
+
+ul li.level-1{
+list-style-type:none;
+
+}
+
+
+h1{
+margin-bottom:1em;
+}
+
+.entity p{
+color:#000;
+}
+
+
+.class-type{
+color:#090;
+font-size:0.8em;
+}
+
+
+#banner {
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+}
+

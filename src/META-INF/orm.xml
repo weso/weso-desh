@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings
+	xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation= "http://java.sun.com/xml/ns/persistence/orm orm_1_0.xsd"
+	version="1.0">
+<!--
+    <named-query name="isUser">
+		<query>select u from User u where u.username = :username</query>
+		<hint name="org.hibernate.readOnly" value="true" />
+		<hint name="timeout" value="60" />
+	</named-query>
+
+
+    <named-query name="findLoginUser">
+		<query>select distinct b from User b where b.username = :username and b.password = :password</query>
+		<hint name="org.hibernate.readOnly" value="true" />
+		<hint name="timeout" value="60" />
+	</named-query>
+	
+   <named-query name="getFriendsOfUser">
+		<query>select u from User u left join fetch u.friends f where :userUid in f.uid </query>
+		<hint name="org.hibernate.readOnly" value="true" />
+		<hint name="timeout" value="60" />
+	</named-query>
+	
+	
+
+   <named-query name="isFriendOf">
+		<query>select u from User u left join fetch u.friends f where (u.uid = :userUid and f.uid = :friendUid) or (f.uid = :userUid and u.uid = :friendUid)</query>
+		<hint name="org.hibernate.readOnly" value="true" />
+		<hint name="timeout" value="60" />
+	</named-query>
+
+   <named-query name="getNotificationsByUser">
+		<query>select n from Notification n where n.owner.uid = :userUid order by n.crdate desc</query>
+		<hint name="org.hibernate.readOnly" value="true" />
+		<hint name="timeout" value="60" />
+	</named-query>
+
+   <named-query name="getWall">
+		<query>select w from WallPost w where w.owner.uid = :userUid order by w.crdate desc</query>
+		<hint name="org.hibernate.readOnly" value="true" />
+		<hint name="timeout" value="60" />
+	</named-query>
+
+-->
+
+
+</entity-mappings>

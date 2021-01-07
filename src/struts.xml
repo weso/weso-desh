@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd ">
+<struts>
+	<constant name="struts.custom.i18n.resources" value="global" />
+
+	<package name="example" extends="struts-default">
+
+
+		<interceptors>
+			<interceptor name="LoginInterceptor"
+				class="es.uniovi.weso.actions.login.LoginInterceptor" />
+	
+			<interceptor-stack name="dasdiLoginStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="LoginInterceptor" /> 
+			</interceptor-stack>
+		</interceptors>
+
+
+
+
+
+		<default-interceptor-ref name="dasdiLoginStack" />
+
+		<global-results>
+			<result name="error">/index.jsp</result>
+			<result name="login" type="redirect">Login</result>
+			
+		</global-results>
+
+	    <action name="Login" class="es.uniovi.weso.actions.login.LoginAction">
+			 <result name="input">weso-desh.jsp</result>
+		</action>
+
+
+	    <action name="ConfigurationBaseAction" class="es.uniovi.weso.actions.configurationbase.ConfigurationBaseAction">
+			 <result >ConfigurationBase.jsp</result>
+		</action>
+
+
+	    <action name="ControlPanelAction" class="es.uniovi.weso.actions.controlpanel.ControlPanelAction">
+			 <result >ControlPanel.jsp</result>
+		</action>
+
+	
+	    <action name="ExitAction" class="es.uniovi.weso.actions.exit.ExitAction">
+			 <result >Exit.jsp</result>
+		</action>
+
+	
+	    <action name="MimeTypesAction" class="es.uniovi.weso.actions.mimetypes.MimeTypesAction">
+			 <result >MimeTypes.jsp</result>
+		</action>
+	
+	    <action name="NamespacesAction" class="es.uniovi.weso.actions.namespaces.NamespacesAction">
+			 <result >Namespaces.jsp</result>
+		</action>
+
+	
+	    <action name="RulesAction" class="es.uniovi.weso.actions.rules.RulesAction">
+			 <result >Rules.jsp</result>
+		</action>
+
+	
+	    <action name="UserAction" class="es.uniovi.weso.actions.user.UserAction">
+			 <result >UserList.jsp</result>
+		</action>
+
+	
+		<action name="LinkedDataController" class="es.uniovi.weso.actions.linkeddata.LinkedDataController">
+			<result name="input">/index.jsp</result>
+			
+            <result name="rdfResp" type="stream">
+                <param name="contentType">application/rdf+xml</param>
+                <param name="inputName">resultStream</param>
+                <param name="contentDisposition">filename="datos.rdf"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+
+            <result name="htmlResp" type="stream">
+                <param name="contentType">application/xhtml+xml</param>
+                <param name="inputName">resultStream</param>
+                <param name="contentDisposition">filename="datos.html"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+
+            <result name="jsonResp" type="stream">
+                <param name="contentType">application/rdf+json</param>
+                <param name="inputName">resultStream</param>
+                <param name="contentDisposition">filename="datos.json"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+
+            <result name="n3Resp" type="stream">
+                <param name="contentType">text/rdf+n3</param>
+                <param name="inputName">resultStream</param>
+                <param name="contentDisposition">filename="datos.n3"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+
+            <result name="ntriplesResp" type="stream">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">resultStream</param>
+                <param name="contentDisposition">filename="datos.ntriples"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+
+            <result name="csvResp" type="stream">
+                <param name="contentType">text/csv</param>
+                <param name="inputName">resultStream</param>
+                <param name="contentDisposition">filename="datos.csv"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+
+			<result name="seeOther" type="httpheader">
+				<param name="status">303</param>
+				<param name="headers.Location">${seeOtherURI}</param>
+			</result>
+
+
+		</action>
+
+	</package>
+</struts>

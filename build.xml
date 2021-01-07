@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<!--
+		
+		WESO DESH Ant build file.
+		
+		author: Francisco Cifuentes
+		email: francisco.cifuentes@weso.es
+		date:
+-->
+<project name="weso-desh" default="war">
+
+	<property name="name" value="WESO-DESH Linked data frontend" />
+	<property name="version" value="0.1" />
+	<property name="project" value="WESO-DESH" />
+
+	<path id="compile.classpath">
+
+		<fileset dir="WebContent/WEB-INF/lib">
+
+			<include name="*.jar" />
+
+		</fileset>
+
+	</path>
+
+
+
+	<target name="init">
+
+		<mkdir dir="build/classes" />
+
+		<mkdir dir="dist" />
+
+	</target>
+
+
+
+	<target name="compile" depends="init">
+		<javac destdir="build/classes" debug="true" srcdir="src">
+
+			<classpath refid="compile.classpath" />
+
+		</javac>
+
+	</target>
+
+
+
+	<target name="war" depends="compile">
+
+		<war destfile="dist/weso-desh.war" webxml="WebContent/WEB-INF/web.xml">
+
+			<fileset dir="WebContent" />
+
+			<lib dir="WebContent/WEB-INF/lib" />
+
+			<classes dir="build/classes" />
+		</war>
+
+	</target>
+
+
+
+	<target name="clean">
+
+		<delete dir="dist" />
+
+		<delete dir="build" />
+	</target>
+
+</project>

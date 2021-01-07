@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Configuration file for UrlRewriteFilter
+    http://tuckey.org/urlrewrite/
+
+-->
+<urlrewrite>
+
+
+    <outbound-rule>
+        <note>
+            The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
+            the url /rewrite-status will be rewritten to /test/status/.
+
+            The above rule and this outbound-rule means that end users should never see the
+            url /rewrite-status only /test/status/ both in thier location bar and in hyperlinks
+            in your pages.
+        </note>
+        <from>/rewrite-status</from>
+        <to>/test/status/</to>
+    </outbound-rule>
+
+
+
+
+
+
+<!-- 
+############################################################################
+############################ Patrones a resolver #################################
+############################################################################
+-->
+
+
+
+
+-  
+  
+     <rule>
+         <id>1</id>
+         <from>^/([a-zA-Z0-9]+)/datos.([a-z0-9]{2,8})$</from>
+         <to>/LinkedDataController.action?pattern_number=1&amp;nombre=$1&amp;format=$2</to>
+         <sparql><![CDATA[
+         construct {<http://localhost:8080/weso-desh/#$nombre$#> ?p ?o .} 
+         where {
+        
+         <http://dbpedia.org/resource/#$nombre$#> ?p ?o .
+         }
+]]>
+        </sparql>
+     </rule>
+
+     <rule>
+         <id>1_</id>
+         <from>^/([a-zA-Z0-9]+)$</from>
+         <to>/LinkedDataController.action?pattern_number=1&amp;nombre=$1</to>
+     </rule>
+
+
+
+
+<!-- 
+############################################################################
+############################# NUEVOS FIN ###################################
+############################################################################
+-->
+
+
+
+   <endpointURI>http://dbpedia.org/sparql</endpointURI>
+
+   <urlBase>http://localhost:8080/weso-desh/</urlBase>
+ 
+    
+   <namespaces>
+       <namespace prefix="rdfs">
+            <uri>http://www.w3.org/2000/01/rdf-schema#</uri>
+       </namespace>
+       <namespace prefix="rdf">
+            <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#</uri>
+       </namespace>
+       <namespace prefix="foaf">
+            <uri>http://xmlns.com/foaf/0.1/</uri>
+       </namespace>
+       <namespace prefix="frbr">
+            <uri>http://purl.org/vocab/frbr/core#</uri>
+       </namespace>
+       <namespace prefix="dc">
+            <uri>http://purl.org/dc/elements/1.1/</uri>
+       </namespace>
+       <namespace prefix="skos">
+            <uri>http://www.w3.org/2004/02/skos/core#</uri>
+       </namespace>
+      <namespace prefix="bio">
+            <uri>http://purl.org/vocab/bio/0.1/</uri>
+       </namespace>
+      <namespace prefix="time">
+            <uri>http://www.w3.org/2006/time#</uri>
+       </namespace>
+      <namespace prefix="xsd">
+            <uri>http://www.w3.org/2001/XMLSchema#</uri>
+       </namespace>
+      <namespace prefix="org">
+            <uri>http://www.w3.org/ns/org#</uri>
+       </namespace>
+      <namespace prefix="bcnbio">
+            <uri>http://datos.bcn.cl/ontologies/bcn-biographies#</uri>
+       </namespace>
+      <namespace prefix="bcnbills">
+            <uri>http://datos.bcn.cl/ontologies/bcn-bills#</uri>
+       </namespace>
+      <namespace prefix="bcngeo">
+            <uri>http://datos.bcn.cl/ontologies/bcn-geographics#</uri>
+       </namespace>
+      <namespace prefix="bcnres">
+            <uri>http://datos.bcn.cl/ontologies/bcn-resources#</uri>
+      </namespace>
+      <namespace prefix="bcnses">
+            <uri>http://datos.bcn.cl/ontologies/bcn-sessiondaily#</uri>
+      </namespace>
+      <namespace prefix="bcncon">
+            <uri>http://datos.bcn.cl/ontologies/bcn-congress#</uri>
+       </namespace>
+       <namespace prefix="bcnnorms">
+            <uri>http://datos.bcn.cl/ontologies/bcn-norms#</uri>
+       </namespace>    
+       <namespace prefix="gn">
+            <uri>http://www.geonames.org/ontology#</uri>
+       </namespace>    
+       <namespace prefix="owl">
+            <uri>http://www.w3.org/2002/07/owl#</uri>
+       </namespace>    
+       <namespace prefix="geo">
+            <uri>http://www.w3.org/2003/01/geo/wgs84_pos#</uri>
+       </namespace>    
+       <namespace prefix="dbpedia">
+            <uri>http://dbpedia.org/resource/</uri>
+       </namespace>    
+       <namespace prefix="dbpedia-owl">
+            <uri>http://dbpedia.org/ontology/</uri>
+       </namespace>    
+       <namespace prefix="bcnres">
+            <uri>http://datos.bcn.cl/ontologies/bcn-resources#</uri>
+       </namespace>    
+       <namespace prefix="wikidata-prop">
+            <uri>https://www.wikidata.org/wiki/Property:</uri>
+       </namespace>    
+       
+       
+       
+  </namespaces>
+
+
+
+     <formats>
+        <format label="Notation 3">
+            <extension>n3</extension>
+            <contentType>text/rdf+n3</contentType>
+        </format>
+        <format label="JSON">
+            <extension>json</extension>
+            <contentType>application/rdf+json</contentType>
+        </format>
+        <format label="RDF/XML">
+            <extension>rdf</extension>
+            <contentType>application/rdf+xml</contentType>
+        </format>
+        <format label="N Triples">
+            <extension>ntriples</extension>
+            <contentType>text/plain</contentType>
+        </format>
+        <format label="HTML+RDFa">
+            <extension default="true">html</extension>
+            <contentType default="true">application/xhtml+xml</contentType>
+        </format>
+        <format label="CSV">
+            <extension>csv</extension>
+            <contentType>text/csv</contentType>
+        </format>
+    </formats>
+
+
+</urlrewrite>
