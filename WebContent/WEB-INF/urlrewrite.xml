@@ -57,6 +57,30 @@
          <to>/LinkedDataController.action?pattern_number=1&amp;nombre=$1</to>
      </rule>
 
+<!--  -->
+
+
+
+    <rule>
+         <id>1</id>
+         <from>^/dataset/([a-zA-Z0-9]+)/datos.([a-z0-9]{2,8})$</from>
+         <to>/LinkedDataController.action?pattern_number=1&amp;nombre=$1&amp;format=$2</to>
+         <sparql><![CDATA[
+         construct {<http://biosoft.cl/resource/dataset/#$nombre$#> ?p ?o .} 
+         where {
+        
+         <http://dbpedia.org/resource/#$nombre$#> ?p ?o .
+         }
+]]>
+        </sparql>
+     </rule>
+
+     <rule>
+         <id>1_</id>
+         <from>^/dataset/([a-zA-Z0-9]+)$</from>
+         <to>/LinkedDataController.action?pattern_number=1&amp;dataset=dataset&amp;nombre=$1</to>
+     </rule>
+
 
 
 
@@ -70,7 +94,7 @@
 
    <endpointURI>http://dbpedia.org/sparql</endpointURI>
 
-   <urlBase>http://localhost:8080/weso-desh/</urlBase>
+   <urlBase>http://biosoft.cl/resource/</urlBase>
  
     
    <namespaces>
